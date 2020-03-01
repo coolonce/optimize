@@ -70,6 +70,35 @@ namespace kursOptimiz
 
         }
 
+        public void MethodBox(out List<PointF> pts)
+        {
+            //n - кол-во независеммых переменных
+            int n = 2;
+            //Длинна комлекса 2 * n при n <= 5  
+            int N = 2*n;
+            //Комплекс
+            double[,] x = new double[n, N];
+
+            //нижнее и вверхнее допуустимое значение переменной
+            double[] g = new double[] { Param1Min, Param2Min };
+            double[] h = new double[] { Param1Max, Param2Max };
+            //псевдослучайных чисел 
+            double[,] r = new double[n, N];
+            Random rnd = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    r[i, j] = rnd.NextDouble();
+                    x[i, j] = g[i] + r[i, j] * (h[i] - g[i]);
+                }
+            }
+
+
+
+            pts = new List<PointF>();
+        }
+
         public void SetAccuracy(double accX, double accZ)
         {
             XYPointsCount = accX;

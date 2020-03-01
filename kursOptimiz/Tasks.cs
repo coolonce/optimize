@@ -61,7 +61,7 @@ namespace kursOptimiz
             resultOutputMessages.Add("3", message);
 
             tasksList.Add("Задание Смирнова Кирилла", "4");
-            granPoint.Add("4", new double[] { 1, 10, 1, 10});
+            granPoint.Add("4", new double[] { 1, 10, 1, 10 });
             task = "a *(A1^2 + b*A2 - u*V1)^N +\na1 *(A1*b1 + A2^2 - u1*V2)^N";
             message = "Максимальная прибыль от реализации целевого компонента за смену достигается при следующих значенияъ A1=: и A2=: и равна : у.е.";
             formalTaskList.Add("4", task);
@@ -85,7 +85,7 @@ namespace kursOptimiz
             return formalTaskList;
         }
 
-        public Dictionary<string,string> GetOutMessage()
+        public Dictionary<string, string> GetOutMessage()
         {
             return resultOutputMessages;
         }
@@ -104,7 +104,7 @@ namespace kursOptimiz
             double A = 9;
             //Скорорость вращения мешалки(2об/с) 
             double N = 10;
-            return 100*alpha * G * (Math.Pow(t1 - t2, 2) + beta + (1 / A) + Math.Pow(t1 + t2 - nu * N, 2));
+            return 100 * alpha * G * (Math.Pow(t1 - t2, 2) + beta + (1 / A) + Math.Pow(t1 + t2 - nu * N, 2));
         }
 
         //TODO
@@ -121,7 +121,7 @@ namespace kursOptimiz
 
         public static double MainFunction2(double t1, double t2)
         {
-            double alpha = 1; double beta = 1; double nu = 1; double gamma= 1; double beta1 = 1;double nu1 = 1;
+            double alpha = 1; double beta = 1; double nu = 1; double gamma = 1; double beta1 = 1; double nu1 = 1;
             //Раскод реакционной массы (2кг/ч) Данно в задаче 
             double G = 1.0;
             //величины перепадов давления на перегородках
@@ -132,7 +132,7 @@ namespace kursOptimiz
             double P = 10;
             //Количество перегородок
             double N = 2;
-            return 80*alpha * G * Math.Pow((Math.Pow(t1, 2) + beta*t2 - nu*deltaP1),N) + 80*gamma*Math.Pow(beta1*t1 + Math.Pow(t2,2) - nu1*deltaP2, N);
+            return 80 * alpha * G * Math.Pow((Math.Pow(t1, 2) + beta * t2 - nu * deltaP1), N) + 80 * gamma * Math.Pow(beta1 * t1 + Math.Pow(t2, 2) - nu1 * deltaP2, N);
         }
 
         //TODO
@@ -154,7 +154,7 @@ namespace kursOptimiz
             double V1 = 11; double V2 = 7;
             //Количество реакторов
             double N = 2;
-            return 8*alpha * Math.Pow(Math.Pow(A1, 2) + beta * A2 - nu * V1, N) + 8*alpha1 * Math.Pow(Math.Pow(A2, 2) + beta1 * A1 - nu1 * V2, N);
+            return 8 * alpha * Math.Pow(Math.Pow(A1, 2) + beta * A2 - nu * V1, N) + 8 * alpha1 * Math.Pow(Math.Pow(A2, 2) + beta1 * A1 - nu1 * V2, N);
         }
 
         //TODO
@@ -174,7 +174,7 @@ namespace kursOptimiz
             bool secondMin = t1 <= Param1Max;
             bool thirdMin = t2 >= Param2Min;
             bool fourthMin = t2 <= Param2Max;
-            bool fifthCond = ((4*t1 + 5*t2) <= 20);
+            bool fifthCond = ((4 * t1 + 5 * t2) <= 20);
             return firstMin && secondMin && thirdMin && fourthMin && fifthCond;
         }
 
@@ -204,6 +204,78 @@ namespace kursOptimiz
             Param2Max = param2Max;
         }
 
+        public static List<PointF> MethodBox(out List<PointF> pts, MethodInfo mainF, MethodInfo condF, bool sMin)
+        {
+            //n - кол-во независеммых переменных
+            int n = 2;
+            //Длинна комлекса 2 * n при n <= 5  
+            int N = 2 * n;
+            double[,] x = CalcComplex(n, N);
+            int P = CheckComplex(x, n, N);
+
+            pts = new List<PointF>();
+            return pts;
+        }
+
+        private static double[,] CalcComplexStar(double[,] x, int n, int N, int P)
+        {
+            double[,] x_star = new double[n, N];
+
+
+            return x_star;
+        }
+
+        private static int CheckComplex(double[,] x, int n,  int N)
+        {
+            int P = 0;
+            double[] g = new double[] { Param1Min, Param2Min };
+            double[] h = new double[] { Param1Max, Param2Max };
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (x[i, j] > g[i] && x[i, j] < h[i])
+                    {
+                        P++;
+                    }
+                }
+            }
+
+            return P;
+        }
+
+        private static double[,] CalcComplex(int n, int N)
+        {
+         
+            //Комплекс
+            double[,] x = new double[n, N];
+
+            //нижнее и вверхнее допуустимое значение переменной
+            double[] g = new double[] { Param1Min, Param2Min };
+            double[] h = new double[] { Param1Max, Param2Max };
+            //псевдослучайных чисел 
+            double[,] r = new double[n, N];
+            Random rnd = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    r[i, j] = rnd.NextDouble();
+                    x[i, j] = g[i] + r[i, j] * (h[i] - g[i]);
+                }
+            }
+
+            if (CheckComplex(x, n, N) >= 1)
+            {
+                return x;
+            }
+            else
+            {
+                CalcComplex(n, N);
+            }
+
+            return x;
+        }
 
         public static List<PointF> Calculate(out List<PointF> pts, MethodInfo mainF, MethodInfo condF, bool sMin)
         {

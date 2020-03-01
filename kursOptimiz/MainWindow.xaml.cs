@@ -27,10 +27,12 @@ namespace kursOptimiz
         {
             InitializeComponent();
             w = new Window1(IntiDataForTask);
-            w2 = new Window2();
+            w2 = new Window2(ref selectMethodlabel);
+            selectMethodlabel.Content = "Метод сканирования с фиксированным шагом";
         }
 
-        Calculation calc;
+        public string selectedMethods = "";
+
         Bitmap bmp;
         Graphics graph;
         List<System.Drawing.Color> colors;
@@ -44,6 +46,7 @@ namespace kursOptimiz
         public MethodInfo MainFunc;
         public MethodInfo Condit;
         public MethodInfo Calculate;
+        public MethodInfo MethodBox;
         public MethodInfo SetMinMax;
         public MethodInfo SetAccuracy;
         public MethodInfo GetCalculations;
@@ -68,6 +71,7 @@ namespace kursOptimiz
             MainFunc = TestType.GetMethod("MainFunction" + inxTask);
             Condit = TestType.GetMethod("Contidions" + inxTask);
             Calculate = TestType.GetMethod("Calculate");
+            MethodBox = TestType.GetMethod("MethodBox");
             SetMinMax = TestType.GetMethod("SetMinMax");
             SetAccuracy = TestType.GetMethod("SetAccuracy");
             GetCalculations = TestType.GetMethod("GetCalculations");
@@ -101,6 +105,7 @@ namespace kursOptimiz
             Stopwatch stop = new Stopwatch();
             stop.Start();
             pts = Calculate.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
+            pts = MethodBox.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
             stop.Stop();
             string calcTime = stop.ElapsedMilliseconds.ToString();
 
@@ -163,7 +168,7 @@ namespace kursOptimiz
             }
             if (vals.Count == 0)
             {
-                MessageBox.Show("Все значения функции при данных ограничениях на пеерменные, находятся вне области определения функции", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Все значения функции при данных ограничениях на переменные, находятся вне области определения функции", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -406,7 +411,7 @@ namespace kursOptimiz
         {
             MessageBox.Show(@"Данная программа была создана в рамках курсового проекта
             по дисциплине ''Методы оптимизации'';
-            Выполнил - студент группы №465, Винокуров Никита Александрович;
+            Выполнил - студенты группы №465, Киселев Вадим Андреевич, Винокуров Никита Александрович, Филимонова Марина Витальевна, Каличва Ксения Михайловна;
             Руководитель - Смирнов Игорь Александрович;", "Внимание!", MessageBoxButton.OK);
         }
 
@@ -418,7 +423,7 @@ namespace kursOptimiz
 
         private void MethodList_Click(object sender, RoutedEventArgs e)
         {
-            w2 = new Window2();
+            w2 = new Window2(ref selectMethodlabel);
             w2.Show();
         }
 

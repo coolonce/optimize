@@ -19,15 +19,19 @@ namespace kursOptimiz
     /// </summary>
     public partial class Window2 : Window
     {
-        public Window2()
+        System.Windows.Controls.Label selectedMethods;
+
+        public Window2(ref System.Windows.Controls.Label selectedMethods)
         {
             InitializeComponent();
-            string[] methodNames = { "Метод сканирования с фиксированным шагом","Метод сканирования с переменным шагом", "Комплексный метод бокса", "Симплексный метод", "Метод наискорейшего спуска", "Метод поочерёдного варьирования переменных" };
+            string[] methodNames = { "Метод сканирования с фиксированным шагом", "Комплексный метод бокса", "Метод сканирования с переменным шагом", "Симплексный метод", "Метод наискорейшего спуска", "Метод поочерёдного варьирования переменных" };
             foreach (string method in methodNames)
             {
                 this.selectMetodcomboBox.Items.Add(method);
             }
             this.selectMetodcomboBox.SelectedItem = methodNames[0];
+            this.selectedMethods = selectedMethods;
+            selectedMethods.Content = this.selectMetodcomboBox.SelectedValue.ToString();
         }
 
         private void windowSelectMethod_Closed(object sender, EventArgs e)
@@ -37,8 +41,18 @@ namespace kursOptimiz
 
         private void selectMethod_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("На данный момент, из представленных методов реализован только метод сканирования, поэтому оптимизация задач будет проводится с использованием метода сканирования с фиксированным шагом");
-            this.selectMetodcomboBox.SelectedItem = this.selectMetodcomboBox.Items[0].ToString();
+            var selectMethod = selectMetodcomboBox.SelectedValue;
+            if (selectMethod.ToString() != "Метод сканирования с фиксированным шагом" && selectMethod.ToString() != "Комплексный метод бокса")
+            {
+                MessageBox.Show("На данный момент, из представленных методов реализован только метод сканирования и комплексный метод бокса, поэтому оптимизация задач будет проводится с использованием метода сканирования с фиксированным шагом");
+                this.selectMetodcomboBox.SelectedItem = this.selectMetodcomboBox.Items[0].ToString();
+            }
+            else
+            {
+                selectedMethods.Content = this.selectMetodcomboBox.SelectedValue.ToString();
+                this.Close();
+            }
+            
         }
     }
 }

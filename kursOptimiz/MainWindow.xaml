@@ -44,6 +44,7 @@
             <MenuItem x:Name="MethodList" Header="Библиотека методов оптимизации" Click="MethodList_Click" />
             <MenuItem x:Name="MenuHelp" Header="Справка" Click="Help_Click"/>
         </Menu>
+        <Label x:Name="selectMethodlabel" Content="Метод: " HorizontalAlignment="Left" Margin="10,0,0,0" Width="281" Height="30" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="selectTasklabel" Content="Функция: ɑ *( G * µ* ((T2 - T1)^N + (β * A - T1)^N)" HorizontalAlignment="Left" Margin="10,28,0,0" Width="281" Height="30" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="resT1" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,395,0,0" VerticalAlignment="Top" Height="35" Width="271"/>
         <Label x:Name="resT2" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Height="35" Width="271"/>

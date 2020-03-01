@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kursOptimiz"
         mc:Ignorable="d"
-        Title="Выбор задачи" Height="174.079" Width="261.184" Closed="windowSelectMethod_Closed">
+        Title="Выбор задачи" Height="224.852" Width="275.172" Closed="windowSelectMethod_Closed">
     <Grid>
         <ComboBox x:Name="selectMetodcomboBox" HorizontalAlignment="Center" Margin="49,60,39,0" VerticalAlignment="Top" Width="165"/>
         <Label x:Name="label" Content="Выбор метода оптимизации" HorizontalAlignment="Center" Margin="10,16,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="selectMethod" Content="Выбрать" HorizontalAlignment="Left" Margin="49,110,0,0" VerticalAlignment="Top" Width="165" Click="selectMethod_Click"/>
+        <Button x:Name="selectMethod" Content="Выбрать" HorizontalAlignment="Left" Margin="56,105,0,0" VerticalAlignment="Top" Width="165" Click="selectMethod_Click"/>
 
     </Grid>
 </Window>
