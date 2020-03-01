@@ -1,0 +1,58 @@
+﻿<Window x:Class="kursOptimiz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kursOptimiz"
+        xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="Курсовая работа по оптимизации" Height="760.696" Width="1021.839" Loaded="Window_Loaded_1" MinHeight="760.696" MinWidth="1021.839" Closed="closedW">
+    <Grid HorizontalAlignment="Left" Width="1026">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="720"/>
+            <ColumnDefinition Width="306"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label3" Content="Точность функции:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <TextBox x:Name="textBoxDeltaF" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="238,129,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="43"/>
+        <Label x:Name="label_Copy1" Content="Точность параметров:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <TextBox x:Name="textBoxDeltaX" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="238,159,0,0" TextWrapping="Wrap" Text="750" VerticalAlignment="Top" Width="43"/>
+        <Label x:Name="label1_Copy1" Content="Настройки" Grid.Column="1" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="73"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="1" Margin="10,93,0,0" VerticalAlignment="Top" Width="277"/>
+        <Button x:Name="resolve_button1" Content="Решить задачу" Grid.Column="1" HorizontalAlignment="Left" Margin="10,595,0,0" VerticalAlignment="Top" Width="277" Height="26" Click="resolve_button_Click"/>
+        <Button x:Name="show3d_button1" Content="Показать 3D график" Grid.Column="1" HorizontalAlignment="Left" Margin="10,657,0,0" VerticalAlignment="Top" Width="277" Height="26" Click="show3d_button1_Click" RenderTransformOrigin="0.502,1.808"/>
+        <Label x:Name="label5" Content="Минимальное значение 1 параметра" Grid.Column="1" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <Label x:Name="label2_Copy3" Content="Максимальное значение 1 параметра" Grid.Column="1" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <Label x:Name="label2_Copy4" Content="Минимальное значение 2 параметра" Grid.Column="1" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <Label x:Name="label2_Copy5" Content="Максимальное значение 2 параметра" Grid.Column="1" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top" Height="26" Width="221"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Height="1" Margin="10,194,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="277"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="1" Margin="10,340,0,0" VerticalAlignment="Top" Width="277"/>
+        <TextBox x:Name="textBoxParam1Min" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,203,0,0" TextWrapping="Wrap" Text="-3" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="textBoxParam1Max" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,237,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="textBoxParam2Min" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,268,0,0" TextWrapping="Wrap" Text="-2" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="textBoxParam2Max" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="238,300,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="43"/>
+        <Label x:Name="labelCalculationsCount" HorizontalContentAlignment="Center" RenderTransformOrigin="0.773,2.115" Margin="3,0,19,340" Height="33" VerticalAlignment="Bottom" Grid.Column="1">-</Label>
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="0,46,10,10">
+            <WindowsFormsHost Background="Transparent" x:Name="pictureBoxMain" Margin="-1,9,-46,9" HorizontalAlignment="Left" Width="700" >
+                <WindowsFormsHost.Child>
+                    <forms:PictureBox BorderStyle="FixedSingle"></forms:PictureBox>
+                </WindowsFormsHost.Child>
+            </WindowsFormsHost>
+        </Border>
+        <Button x:Name="buttonExportImage" Content="Сохранить 2D график в png" Grid.Column="1" HorizontalAlignment="Left" Margin="10,688,0,0" VerticalAlignment="Top" Width="277" Height="26" Click="buttonExportImage_Click"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="505" Margin="0,5,0,0" Background="White">
+            <MenuItem x:Name="TaskList" Header="Библиотека оптимизационных задач" Click="TaskList_Click"/>
+            <MenuItem x:Name="MethodList" Header="Библиотека методов оптимизации" Click="MethodList_Click" />
+            <MenuItem x:Name="MenuHelp" Header="Справка" Click="Help_Click"/>
+        </Menu>
+        <Label x:Name="selectTasklabel" Content="Функция: ɑ *( G * µ* ((T2 - T1)^N + (β * A - T1)^N)" HorizontalAlignment="Left" Margin="10,28,0,0" Width="281" Height="30" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="resT1" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,395,0,0" VerticalAlignment="Top" Height="35" Width="271"/>
+        <Label x:Name="resT2" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Height="35" Width="271"/>
+        <Label x:Name="res" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,475,0,0" VerticalAlignment="Top" Height="35" Width="271"/>
+        <Button x:Name="ShowTask" Content="Показать текста заданий" Grid.Column="1" HorizontalAlignment="Right" Margin="0,626,19,0" VerticalAlignment="Top" Width="277" Click="ShowTask_Click" Height="26"/>
+        <Label x:Name="CalculationsTime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="271" Height="35"/>
+        <Label x:Name="VisualisationTime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,555,0,0" VerticalAlignment="Top" Width="271" Height="35"/>
+        <Button x:Name="ShowTaskButton" Content="Показать уравнение" Grid.Column="1" HorizontalAlignment="Left" Margin="83,63,0,0" VerticalAlignment="Top" Width="121" Height="25" Click="ShowTaskButtonClick"/>
+
+
+    </Grid>
+</Window>

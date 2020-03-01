@@ -1,0 +1,193 @@
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+E:\proj\kursOptimiz\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojResolveAssemblyReference.cache
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.Cache
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\Ric124\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\stud\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window2.g.cs
+C:\Users\prais\Desktop\123\kursOptimiz\kursOptimiz\obj\Debug\Window2.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window2.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window2.baml
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\Курсовой оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window2.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\Window2.baml
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\Курсовой_ оптимизация\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.config
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\kursOptimiz.pdb
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.dll
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\System.Drawing.Common.dll
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\bin\Debug\itextsharp.xml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csprojAssemblyReference.cache
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\Window1.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\Window2.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\App.g.cs
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.cache
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz_MarkupCompile.lref
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\3DGraph.baml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\MainWindow.baml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\ShowFormalTask.baml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\Window1.baml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\Window2.baml
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.g.resources
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.Properties.Resources.resources
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.GenerateResource.cache
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CoreCompileInputs.cache
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe.manifest
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.application
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.csproj.CopyComplete
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.exe
+C:\Users\prais\Desktop\kursovoyOptimizaciya\kursOptimiz\kursOptimiz\obj\Debug\kursOptimiz.pdb

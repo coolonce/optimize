@@ -1,0 +1,50 @@
+ void DrawValues(float[] valuesToSearch)
+        {
+            int counter = 0;
+            double XPointsCount = double.Parse(textBoxDeltaX.Text);
+            //float ZPointsCount = float.Parse(textBoxDeltaF.Text);
+            double fMin, fMax;
+            double deltaX = (Convert.ToDouble(textBoxParam1Max.Text) - Convert.ToDouble(textBoxParam1Min.Text)) / XPointsCount;            
+            FindFuncMinMax(deltaX, out fMin, out fMax);
+            graph.Clear(System.Drawing.Color.White);
+            double delta = (fMax - fMin) / XPointsCount;
+            System.Drawing.Color toDraw = colors[rand.Next(colors.Count)];
+            foreach (var value in valuesToSearch)
+            {
+                System.Drawing.Color n = colors[rand.Next(colors.Count)];
+                while (n.Equals(toDraw))
+                    n = colors[rand.Next(colors.Count)];
+                toDraw = n;
+                for (double Param2Coord = Convert.ToDouble(textBoxParam2Min.Text); Param2Coord <= Convert.ToDouble(textBoxParam2Max.Text); Param2Coord += delta)
+                    for (double Param1Coord = Convert.ToDouble(textBoxParam1Min.Text); Param1Coord <= Convert.ToDouble(textBoxParam1Max.Text); Param1Coord += delta)
+                    {
+                        //if (!Calculation.Contidions(Param1Coord, Param2Coord))
+                        //    continue;
+                        if (!Convert.ToBoolean(Condit.Invoke(null, new object[] { Param1Coord, Param2Coord })))
+                            continue;
+                        var res = MainFunc.Invoke(null, new object[] { Param1Coord, Param2Coord });
+                        double val = Convert.ToDouble(res);
+                        if (val >= value - delta && val <= value + delta)
+                        {
+                            int yCoord = GetPixelFromCoord(Param2Coord, true, false);
+                            int xCoord = GetPixelFromCoord(Param1Coord, false, false);
+                            bmp.SetPixel(xCoord, yCoord, toDraw);
+                            counter++;
+                        }
+                    }
+            }
+            if (true)
+            {
+                graph.DrawLine(Pens.Black, 350, 0, 350, 700);
+                graph.DrawLine(Pens.Black, 0, 350, 700, 350);
+                Font fn = new Font("TimesNewRoman", 12);
+                graph.DrawString("A1", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(675, 350));
+                graph.DrawString("A2", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(350, 0));
+                graph.DrawString($"({Convert.ToDouble(textBoxParam1Min.Text) + (Convert.ToDouble(textBoxParam1Max.Text) - Convert.ToDouble(textBoxParam1Min.Text)) / 2}; {Convert.ToDouble(textBoxParam2Min.Text) + (Convert.ToDouble(textBoxParam2Max.Text) - Convert.ToDouble(textBoxParam2Min.Text)) / 2})", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(350, 350));
+                graph.DrawString($"{Convert.ToDouble(textBoxParam1Max.Text)}", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(675, 330));
+                graph.DrawString($"{Convert.ToDouble(textBoxParam1Min.Text)}", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(0, 330));
+                graph.DrawString($"{Convert.ToDouble(textBoxParam2Max.Text)}", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(320, 0));
+                graph.DrawString($"{Convert.ToDouble(textBoxParam2Min.Text)}", fn, System.Drawing.Brushes.Black, new System.Drawing.Point(320, 675));
+            }
+            (pictureBoxMain.Child as System.Windows.Forms.PictureBox).Image = bmp;
+        }

@@ -1,0 +1,70 @@
+﻿<Window x:Class="kursOptimiz._3DGraph"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kursOptimiz"
+        mc:Ignorable="d"
+        Title="3DGraph" Height="800" Width="1000" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseWheel="Grid_MouseWheel" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp" MouseMove="Window_MouseMove">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="55"></ColumnDefinition>
+            <ColumnDefinition Width="55"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="3" BorderThickness="2" BorderBrush="Black"/>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">\</Label>
+        <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">Min</Label>
+        <Label Grid.Row="1" Grid.Column="3" HorizontalContentAlignment="Center">Max</Label>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center">P1</Label>
+        <Label Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Center">P2</Label>
+        <Label Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Center">F</Label>
+        <Label Grid.Row="2" Grid.Column="2" x:Name="labelXMin" HorizontalContentAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="3" x:Name="labelXMax" HorizontalContentAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="2" x:Name="labelYMin" HorizontalContentAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="3" x:Name="labelYMax" HorizontalContentAlignment="Center"/>
+        <Label Grid.Row="4" Grid.Column="2" x:Name="labelZMin" HorizontalContentAlignment="Center"/>
+        <Label Grid.Row="4" Grid.Column="3" x:Name="labelZMax" HorizontalContentAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="2" Grid.ColumnSpan="2">
+            <Button x:Name="buttonExportImage" Click="buttonExportImage_Click">Экспорт в PNG</Button>
+            <Label HorizontalAlignment="Center">Легенда</Label>
+            <Rectangle Width="20" Height="200">
+                <Rectangle.Fill>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Color="Blue" Offset="0"/>
+                            <GradientStop Color="Aquamarine" Offset="0.2"/>
+                            <GradientStop Color="Lime" Offset="0.5"/>
+                            <GradientStop Color="Yellow" Offset="0.8"/>
+                            <GradientStop Color="Red" Offset="1.0"/>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.LayoutTransform>
+                    <RotateTransform CenterX="0" CenterY="0" Angle="180"/>
+                </Rectangle.LayoutTransform>
+            </Rectangle>
+        </StackPanel>
+        <Viewport3D Name="Viewport" Grid.RowSpan="5">
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="camera" NearPlaneDistance="0" UpDirection="0,1,0" LookDirection="0,0,-50" Position="0,10,50" FieldOfView="50"/>
+            </Viewport3D.Camera>
+            <ModelVisual3D x:Name="model">
+                <ModelVisual3D.Content>
+                    <Model3DGroup x:Name="group">
+                        <AmbientLight Color="DarkGray"/>
+                        <DirectionalLight Color="White" Direction="-5,-5,-7"/>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+    </Grid>
+</Window>
