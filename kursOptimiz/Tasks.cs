@@ -203,7 +203,7 @@ namespace kursOptimiz
             Param2Min = param2Min;
             Param2Max = param2Max;
         }
-
+        private static int n_recurse = 0;
         public static List<PointF> MethodBox(out List<PointF> pts, MethodInfo mainF, MethodInfo condF, bool sMin)
         {
             //n - кол-во независеммых переменных
@@ -212,17 +212,196 @@ namespace kursOptimiz
             int N = 2 * n;
             double[,] x = CalcComplex(n, N);
             int P = CheckComplex(x, n, N);
+            x = CalcComplexStar(x, n, N, P);
+
+
+            //Отсюда закинуть все в отдельный метод
+            double[] F = new double[N];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    F[j] = Convert.ToDouble(mainF.Invoke(null, new object[] { x[0, j], x[1, j] }));
+                }
+            }
+            double[,] new_coord = MainOptimMethodBox(x, mainF, n, N, F, sMin);
+
+
+
 
             pts = new List<PointF>();
+            if (sMin)
+            {
+                pts.Add(new PointF((float)new_coord[0,0], (float)new_coord[0, 0]));
+                //pts.Add(new PointF((float)param1max, (float)param2max));
+            }
+            else
+            {
+                pts.Add(new PointF((float)new_coord[0, 0], (float)new_coord[0, 0]));
+                //pts.Add(new PointF((float)param1min, (float)param2min));
+            }
+
             return pts;
+        }
+        //Общий метод
+        protected static double[,] MainOptimMethodBox(double[,] x, MethodInfo mainF, int n, int N, double[] F, bool sMin)
+        {
+            bool end_search = false;
+            double[,] x_0 = new double[n, N];
+            while (!end_search)
+            {
+                int[] goodBadInx = getIndexGoodBad(F, sMin);
+                int Ginxgood = goodBadInx[0];
+                int Dinxbad = goodBadInx[1];
+                //На 4) Определение координат Сi центра Комплекса 
+                double[] C = new double[n];
+                for (int i = 0; i < n; i++)
+                {
+                    double sum = 0;
+                    for (int j = 0; j < N; j++)
+                    {
+                        sum += x[i, j] - x[i, Dinxbad];
+                    }
+                    C[i] = (1 / N - 1) * sum;
+                }
+                //Проверка условия окончания поиска
+                double B = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    B += Math.Abs(C[i] - x[i, Dinxbad]) + Math.Abs(C[i] - x[i, Ginxgood]);
+                }
+                B = B / (2.0 * Convert.ToDouble(n));
+
+                if (B < FuncAccuracy)
+                {
+                    end_search = true;
+                }
+                Console.WriteLine(B);
+                //Вычисление координаты новой точки Комплекса взамен наихудшей
+                double[] g = new double[] { Param1Min, Param2Min };
+                double[] h = new double[] { Param1Max, Param2Max };
+                for (int i = 0; i < n; i++)
+                {
+                    x[i, 0] = 2.3 * C[i] - 1.3 * x[i, Dinxbad];
+                    if (g[i] >= x[i, 0])
+                    {
+                        x[i, 0] = g[i] + FuncAccuracy;
+                    }
+                    if (x[i, 0] >= h[i])
+                    {
+                        x[i, 0] = h[i] - FuncAccuracy;
+                    }
+                }
+                double[,] x_star = new double[n, N];
+                for (int i = 0; i < n; i++)
+                {
+                    x[i, 0] = (x[i, 0] + C[i]) / 2.0;
+                }
+
+
+                //Вычисление значения целевой функции F0 в новой точке
+                //Нахождение новой вершины смещением xi0   на половину расстояния к лучшей из вершин комплекса  с номером G                
+                //x_0 = new double[n, N];
+                //x = vertexOffset(x, mainF, n, N, Ginxgood, Dinxbad, F);
+                double F0 = calcF0(mainF, x, n, N);
+                // Чекни тут
+                while (F0 > F[Dinxbad])
+                {                    
+                    for (int i = 0; i < n; i++)
+                    {
+                        x[i, 0] = (x[i, 0] + x[i, Ginxgood])/2.0;
+                    }
+                    F0 = calcF0(mainF, x, n, N);
+                }
+
+                //double F0 = calcF0(mainF, x_star, n, N);
+                    
+                F[Dinxbad] = F0;
+            }
+
+            return x_0;
+        }
+        //Нахождение новой вершины смещением xi0   на половину расстояния к лучшей из вершин комплекса  с номером G
+        //protected static double[,] vertexOffset(double[,] x, MethodInfo mainF, int n, int N, int Ginxgood, int Dinxbad, double[] F)
+        //{
+        //    double[,] x_star = new double[n, N];
+            
+        //    if (F0 > F[Dinxbad])
+        //    {
+        //        vertexOffset(x_star, mainF, n, N, Ginxgood, Dinxbad, F);
+        //    }
+        //    return x_star;
+        //}
+       
+        private static double calcF0(MethodInfo mainF,double[,] x, int n, int N)
+        {
+            double F = new double();
+            if (n_recurse < 1000)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    F = Convert.ToDouble(mainF.Invoke(null, new object[] { x[i, 0], x[i, 0] }));
+                }
+            }
+            n_recurse++;
+            return F;
+        }
+
+        private static int[] getIndexGoodBad(double[] F, bool sMin)
+        {
+            int[] goodBad = new int[2];
+            int minValueInx = 0;
+            int maxValueInx = 0;
+            double min = double.MaxValue;
+            double max = double.MinValue;
+
+            for (int i = 0; i < F.Length; i++)
+            {
+                if(F[i] < min)
+                {
+                    minValueInx = i;
+                    min = F[i];
+                }
+                if(F[i]> max)
+                {
+                    maxValueInx = i;
+                    max = F[i];
+                }
+            }
+
+            if (sMin)
+            {
+                goodBad[0] = minValueInx;
+                goodBad[1] = maxValueInx;
+            }
+            else
+            {
+                goodBad[0] = maxValueInx;
+                goodBad[1] = minValueInx;
+            }
+
+            return goodBad;
         }
 
         private static double[,] CalcComplexStar(double[,] x, int n, int N, int P)
         {
-            double[,] x_star = new double[n, N];
+            //double[,] x_star = new double[n, N];
+            P = Math.Abs(N - P);
+            double newP = Math.Abs(P);
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = P + 1; j < N; j++)
+                {
+                    double sum_x = 0;
+                    for (int k = 0; k < P; k++)
+                    {
+                        sum_x += x[i, k];
+                    }
+                    x[i, j] = 0.5 * (x[i,j]) + sum_x/ newP;
+                }
+            }
 
-
-            return x_star;
+            return x;
         }
 
         private static int CheckComplex(double[,] x, int n,  int N)
@@ -244,6 +423,7 @@ namespace kursOptimiz
             return P;
         }
 
+        //Формирование исходного Комплекса
         private static double[,] CalcComplex(int n, int N)
         {
          
@@ -287,6 +467,7 @@ namespace kursOptimiz
             double accuracy = 0.1;
             pts = new List<PointF>();
             for (double Param2Coord = Param2Min; Param2Coord <= Param2Max; Param2Coord += accuracy)
+            {
                 for (double Param1Coord = Param1Min; Param1Coord <= Param1Max; Param1Coord += accuracy)
                 {
                     if (!Convert.ToBoolean(condF.Invoke(null, new object[] { Param1Coord, Param2Coord })))
@@ -309,6 +490,7 @@ namespace kursOptimiz
                         funcMax = val;
                     }
                 }
+            }
             pts = new List<PointF>();
             if (sMin)
             {
