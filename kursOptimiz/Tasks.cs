@@ -305,13 +305,22 @@ namespace kursOptimiz
                 //x = vertexOffset(x, mainF, n, N, Ginxgood, Dinxbad, F);
                 double F0 = calcF0(mainF, x, n, N);
                 // Чекни тут
-                while (F0 > F[Dinxbad])
+                bool fuckFlag = true;
+                while (fuckFlag)
                 {                    
                     for (int i = 0; i < n; i++)
                     {
                         x[i, 0] = (x[i, 0] + x[i, Ginxgood])/2.0;
                     }
                     F0 = calcF0(mainF, x, n, N);
+                    if (sMin)
+                    {
+                        fuckFlag = F0 < F[Dinxbad];
+                    }
+                    else
+                    {
+                        fuckFlag = F0 > F[Dinxbad];
+                    }
                 }
 
                 //double F0 = calcF0(mainF, x_star, n, N);
