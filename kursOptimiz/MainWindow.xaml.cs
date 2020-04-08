@@ -104,13 +104,21 @@ namespace kursOptimiz
             SetAccuracy.Invoke(null, new object[] { double.Parse(textBoxDeltaX.Text.ToString()), double.Parse(textBoxDeltaF.Text.ToString()) });
             Stopwatch stop = new Stopwatch();
             stop.Start();
-            pts = Calculate.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
-            pts = MethodBox.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
+            if (selectMethodlabel.Content.ToString() != "Метод сканирования с фиксированным шагом")
+            {
+                pts = MethodBox.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
+            }
+            else
+            {
+                pts = Calculate.Invoke(null, new object[] { pts, MainFunc, Condit, searchingForMin }) as List<PointF>;
+            }
+               
             stop.Stop();
             string calcTime = stop.ElapsedMilliseconds.ToString();
 
             object tmp = MainFunc.Invoke(null, new object[] { (double)pts[0].X, (double)pts[0].Y });
             object tmp1 = MainFunc.Invoke(null, new object[] { (double)pts[1].X, (double)pts[1].Y });
+
             float[] values;
             List<float> vals = new List<float>();
             float step = -1;
@@ -170,13 +178,45 @@ namespace kursOptimiz
             {
                 MessageBox.Show("Все значения функции при данных ограничениях на переменные, находятся вне области определения функции", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+
+            if (selectMethodlabel.Content.ToString() != "Метод сканирования с фиксированным шагом")
+            {
+
+                tmp = MainFunc.Invoke(null, new object[] { (double)pts[2].X, (double)pts[2].Y });
+
+                values = vals.ToArray();
+                DrawValues(values);
+                DrawResultPoints(pts[2].X, pts[2].Y);
+                //DrawResultPoints(pts[0].X, pts[0].Y);
+                //
+
+
+                resT1.Content = $"А1 = {pts[2].X}";
+                resT2.Content = $"А2 = {pts[2].Y}";
+                //res.Content = $"Результат = {Calculation.MainFunction((double)pts[0].X, (double)pts[0].Y) - (Calculation.MainFunction((double)pts[0].X, (double)pts[0].Y) % float.Parse(textBoxDeltaF.Text)) + float.Parse(textBoxDeltaF.Text)}";
+
+                show3d_button1.IsEnabled = true;
+                res.Content = $"Результат = {Convert.ToDouble(tmp) - (Convert.ToDouble(tmp) % Convert.ToDouble(textBoxDeltaF.Text)) + Convert.ToDouble(textBoxDeltaF.Text)}";
+                labelCalculationsCount.Content = $"Количество вычислений функции = {GetCalculations.Invoke(null, null).ToString()}";
+                stop.Stop();
+                string visTime = stop.ElapsedMilliseconds.ToString();
+                this.VisualisationTime.Content = $"Время визуализации, мс: {visTime}";
+                this.CalculationsTime.Content = $"Время расчёта, мс: {calcTime}";
+
+                string output = $"{this.outputMsg[0]} {pts[2].X}";
+                output += $"{this.outputMsg[1]} {pts[2].Y}";
+
+                double ResultingOptimalOutput = Convert.ToDouble(tmp) - (Convert.ToDouble(tmp) % float.Parse(textBoxDeltaF.Text)) + float.Parse(textBoxDeltaF.Text);
+                output += $"{this.outputMsg[2]} {ResultingOptimalOutput} {outputMsg[3]}";
+
+                MessageBox.Show(output);
+            }
             else
             {
                 values = vals.ToArray();
                 DrawValues(values);
-
-
-                DrawResultPoints(pts);
+                DrawResultPoints(pts[0].X, pts[0].Y);
                 resT1.Content = $"А1 = {pts[0].X}";
                 resT2.Content = $"А2 = {pts[0].Y}";
                 //res.Content = $"Результат = {Calculation.MainFunction((double)pts[0].X, (double)pts[0].Y) - (Calculation.MainFunction((double)pts[0].X, (double)pts[0].Y) % float.Parse(textBoxDeltaF.Text)) + float.Parse(textBoxDeltaF.Text)}";
@@ -197,6 +237,8 @@ namespace kursOptimiz
 
                 MessageBox.Show(output);
             }
+
+
         }
 
 
@@ -310,13 +352,13 @@ namespace kursOptimiz
             }
             (pictureBoxMain.Child as System.Windows.Forms.PictureBox).Image = bmp;
         }
-
-        void DrawResultPoints(List<PointF> pts)
+        //(List<PointF> pts)
+        void DrawResultPoints(double x, double y)
         {
 
-            PointF point = pts[0];
-            int a1Coord = GetPixelFromCoord(point.X, false, false);
-            int a2Coord = GetPixelFromCoord(point.Y, true, false);
+            //PointF point = pts[0];
+            int a1Coord = GetPixelFromCoord(x, false, false);
+            int a2Coord = GetPixelFromCoord(y, true, false);
             graph.DrawLine(Pens.Black, a1Coord, a2Coord - 6, a1Coord, a2Coord + 6);
             graph.DrawLine(Pens.Black, a1Coord - 6, a2Coord, a1Coord + 6, a2Coord);
 

@@ -204,43 +204,205 @@ namespace kursOptimiz
             Param2Max = param2Max;
         }
         private static int n_recurse = 0;
+
+        private static Func<Vertex, bool> CheckVertex = (vertex) => vertex.X1.Value + vertex.X2.Value <= 12;
+        private const double e = 0.01;
         public static List<PointF> MethodBox(out List<PointF> pts, MethodInfo mainF, MethodInfo condF, bool sMin)
         {
+            CalculationsCount++;
             //n - кол-во независеммых переменных
             int n = 2;
             //Длинна комлекса 2 * n при n <= 5  
             int N = 2 * n;
-            double[,] x = CalcComplex(n, N);
-            int P = CheckComplex(x, n, N);
-            x = CalcComplexStar(x, n, N, P);
+            XPoint[,] points;
+            Vertex[] vertices;
 
 
-            //Отсюда закинуть все в отдельный метод
-            double[] F = new double[N];
-            for (int i = 0; i < n; i++)
+
+            double[] g = new double[] { Param1Min, Param2Min };
+            double[] h = new double[] { Param1Max, Param2Max };
+
+            do
             {
+                points = new XPoint[n, N];
+                vertices = new Vertex[N];
+                Random rnd = new Random();
+                
+
                 for (int j = 0; j < N; j++)
                 {
-                    F[j] = Convert.ToDouble(mainF.Invoke(null, new object[] { x[0, j], x[1, j] }));
+                    double r1 = 0.01/0.99 * rnd.NextDouble();
+                    double r2 = 0.01 / 0.99 * rnd.NextDouble();
+                    var p1 = g[0] + r1 * (h[0] - g[0]);
+                    var p2 = g[1] + r2 * (h[1] - g[1]);
+
+                    vertices[j] = new Vertex(new XPoint(p1), new XPoint(p2));
+                }
+
+            } while (vertices.Count(vertex => !CheckVertex(vertex)) == N);
+
+            var nonFixed = new List<Vertex>(vertices.Where(x => !CheckVertex(x)));
+            var fixes = new List<Vertex>(vertices.Where(x => CheckVertex(x)));
+
+
+            var count2 = 0;
+            for (int i = 0; i < nonFixed.Count && count2 < 1000; i++)
+            {
+                double sum1 = 0, sum2 = 0;
+
+                for (int k = 0; k < fixes.Count; k++)
+                {
+                    sum1 += fixes[k].X1.Value;
+                    sum2 += fixes[k].X2.Value;
+                }
+
+                var temp = new Vertex();
+
+                temp.X1.Value = 0.5 * ((nonFixed[i].X1.Value + sum1) / fixes.Count);
+                temp.X2.Value = 0.5 * ((nonFixed[i].X2.Value + sum2) / fixes.Count);
+
+                if (CheckVertex(temp))
+                {
+                    fixes.Add(temp);
+                }
+                else
+                {
+                    nonFixed[i] = temp;
+                    i--;
+                    count2++;
                 }
             }
-            double[,] new_coord = MainOptimMethodBox(x, mainF, n, N, F, sMin);
+
+            vertices = fixes.ToArray();
+
+            //Вычисление значений целевой функции Fj для всех N вершин Комплекса
+            vertices = vertices.Select(vertex =>
+            {
+                vertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { vertex.X1.Value, vertex.X2.Value }));
+                return vertex;
+            }).ToArray();
+
+            Vertex vertexG = default;
+            //Поиск лучшей и худшей вершины
+            do
+            {
+                vertexG = vertices.OrderBy(x => x.Value).First();
+                var vertexD = vertices.OrderBy(x => x.Value).Last();
+
+                //Определение координат Ci центра Комплекса с отброшенной "наихудшей" вершиной
+                // Для X1
+
+                double tsum1 = 0, tsum2 = 0;
+                for (int J = 0; J < N; J++)
+                {
+                    tsum1 += vertices[J].X1.Value;
+                    tsum2 += vertices[J].X2.Value;
+                }
+
+                double C_X1 = 1.0 / (N - 1) * (tsum1 - vertexD.X1.Value);
+                double C_X2 = 1.0 / (N - 1) * (tsum2 - vertexD.X2.Value);
+
+                
+
+                double cSum1 = Math.Abs(C_X1 - vertexD.X1.Value) + Math.Abs(C_X1 - vertexG.X1.Value);
+                double cSum2 = Math.Abs(C_X2 - vertexD.X2.Value) + Math.Abs(C_X2 - vertexG.X2.Value);
+                double B = (cSum1 + cSum2) / (2 * n);
+                //Проверка условия окончания поиска
+                if (B < FuncAccuracy)
+                {
+                    break;
+                }
+
+                //Вычисление координаты новой точки Комплекса взамен наихудшей
+                var optVertex = new Vertex(
+                    new XPoint(2.3 * C_X1 - 1.3 * vertexD.X1.Value),
+                    new XPoint(2.3 * C_X2 - 1.3 * vertexD.X2.Value));
+
+                // Проверка ограничений 1 рода для X1 и X2                
+                if (optVertex.X1.Value < Param1Min)
+                {
+                    optVertex.X1.Value = Param1Min + 1;
+                }
+                else if (optVertex.X1.Value > Param1Max)
+                {
+                    optVertex.X1.Value = Param1Max - 1;
+                }
+
+                if (optVertex.X2.Value < Param2Min)
+                {
+                    optVertex.X2.Value = Param2Min + 1;
+                }
+                else if (optVertex.X2.Value > Param2Max)
+                {
+                    optVertex.X2.Value = Param2Max - 1;
+                }
+                //Проверка выполнения ограничений 2.го рода для новой точки.
+                while (!CheckVertex(optVertex))
+                {
+                    optVertex.X1.Value = 0.5 * (optVertex.X1.Value + C_X1);
+                    optVertex.X2.Value = 0.5 * (optVertex.X2.Value + C_X2);
+                }
+
+                //Вычисление значения целевой функции F0 в новой точке
+                optVertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { optVertex.X1.Value, optVertex.X2.Value }));
+
+                //Нахождение новой вершины смещением xi0   на половину расстояния к лучшей из вершин комплекса  с номером G
+
+                if (sMin)
+                {
+                    while (optVertex.Value > vertexD.Value)
+                    {
+                        optVertex.X1.Value = 0.5 * (optVertex.X1.Value + vertexG.X1.Value);
+                        optVertex.X2.Value = 0.5 * (optVertex.X2.Value + vertexG.X2.Value);
+                        optVertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { optVertex.X1.Value, optVertex.X2.Value }))-10; //а шоб быстрее было
+                    }
+                }
+                else
+                {
+                    while (optVertex.Value < vertexD.Value)
+                    {
+                        optVertex.X1.Value = 0.5 * (optVertex.X1.Value + vertexG.X1.Value);
+                        optVertex.X2.Value = 0.5 * (optVertex.X2.Value + vertexG.X2.Value);
+                        optVertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { optVertex.X1.Value, optVertex.X2.Value }))+10;
+                    }
+                }
+
+                
+                var indexD = vertices.ToList().IndexOf(vertexD);
+                vertices[indexD] = optVertex;
+
+            } while (true);
+
+            //double[,] x = CalcComplex(n, N);
+            //int P = CheckComplex(x, n, N);
+            //x = CalcComplexStar(x, n, N, P);
 
 
-
+            ////Отсюда закинуть все в отдельный метод
+            //double[] F = new double[N];
+            //for (int i = 0; i < n; i++)
+            //{
+            //    for (int j = 0; j < N; j++)
+            //    {
+            //        F[j] = Convert.ToDouble(mainF.Invoke(null, new object[] { x[0, j], x[1, j] }));
+            //    }
+            //}
+            //double[,] new_coord = MainOptimMethodBox(x, mainF, n, N, F, sMin);
+            
 
             pts = new List<PointF>();
+            
             if (sMin)
             {
-                pts.Add(new PointF((float)new_coord[0,0], (float)new_coord[0, 0]));
-                //pts.Add(new PointF((float)param1max, (float)param2max));
+                pts.Add(new PointF((float)Param1Min, (float)Param2Min));
+                pts.Add(new PointF((float)Param1Max, (float)Param2Max));
             }
             else
             {
-                pts.Add(new PointF((float)new_coord[0, 0], (float)new_coord[0, 0]));
-                //pts.Add(new PointF((float)param1min, (float)param2min));
+                pts.Add(new PointF((float)Param1Max, (float)Param2Max));
+                pts.Add(new PointF((float)Param1Min, (float)Param2Min));
             }
-
+            pts.Add(new PointF((float)vertexG.X1.Value, (float)vertexG.X2.Value));
             return pts;
         }
         //Общий метод
@@ -319,7 +481,7 @@ namespace kursOptimiz
                     }
                     else
                     {
-                        fuckFlag = F0 > F[Dinxbad];
+                        fuckFlag = F0 >  F[Dinxbad];
                     }
                 }
 
@@ -513,5 +675,30 @@ namespace kursOptimiz
             }
             return pts;
         }
+    }
+
+
+    public struct Vertex
+    {
+        public XPoint X1;
+        public XPoint X2;
+        public double Value;
+
+        public Vertex(XPoint x1, XPoint x2, double value = 0)
+        {
+            X1 = x1;
+            X2 = x2;
+            Value = value;
+        }
+    }
+
+    public struct XPoint
+    {
+        public XPoint(double value)
+        {
+            Value = value;
+        }
+
+        public double Value { get; set; }
     }
 }
