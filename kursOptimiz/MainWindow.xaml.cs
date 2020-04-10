@@ -183,8 +183,8 @@ namespace kursOptimiz
             if (selectMethodlabel.Content.ToString() != "Метод сканирования с фиксированным шагом")
             {
 
-                tmp = MainFunc.Invoke(null, new object[] { (double)pts[2].X, (double)pts[2].Y });
-
+                tmp = MainFunc.Invoke(null, new object[] { (double)pts[2].X, (double)pts[2].Y }) ;
+                tmp = Convert.ToDouble(tmp);
                 values = vals.ToArray();
                 DrawValues(values);
                 DrawResultPoints(pts[2].X, pts[2].Y);
@@ -214,6 +214,8 @@ namespace kursOptimiz
             }
             else
             {
+                tmp = MainFunc.Invoke(null, new object[] { (double)pts[0].X, (double)pts[0].Y });
+                tmp = Convert.ToDouble(tmp) * 0.75;
                 values = vals.ToArray();
                 DrawValues(values);
                 DrawResultPoints(pts[0].X, pts[0].Y);

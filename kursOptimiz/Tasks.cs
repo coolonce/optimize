@@ -206,6 +206,14 @@ namespace kursOptimiz
         private static int n_recurse = 0;
 
         private static Func<Vertex, bool> CheckVertex = (vertex) => vertex.X1.Value + vertex.X2.Value <= 12;
+        
+        private static bool CheckVertex2(Vertex vertex, MethodInfo condF)
+        {
+            return Convert.ToBoolean(condF.Invoke(null, new object[] { vertex.X1.Value, vertex.X2.Value }));
+        }
+
+        //    
+        //
         private const double e = 0.01;
         public static List<PointF> MethodBox(out List<PointF> pts, MethodInfo mainF, MethodInfo condF, bool sMin)
         {
@@ -231,18 +239,18 @@ namespace kursOptimiz
 
                 for (int j = 0; j < N; j++)
                 {
-                    double r1 = 0.01/0.99 * rnd.NextDouble();
-                    double r2 = 0.01 / 0.99 * rnd.NextDouble();
+                    double r1 = Math.Abs(rnd.NextDouble());
+                    double r2 = Math.Abs(rnd.NextDouble());
                     var p1 = g[0] + r1 * (h[0] - g[0]);
                     var p2 = g[1] + r2 * (h[1] - g[1]);
 
                     vertices[j] = new Vertex(new XPoint(p1), new XPoint(p2));
                 }
 
-            } while (vertices.Count(vertex => !CheckVertex(vertex)) == N);
+            } while (vertices.Count(vertex => !CheckVertex2(vertex, condF)) == N);
 
-            var nonFixed = new List<Vertex>(vertices.Where(x => !CheckVertex(x)));
-            var fixes = new List<Vertex>(vertices.Where(x => CheckVertex(x)));
+            var nonFixed = new List<Vertex>(vertices.Where(x => !CheckVertex2(x, condF)));
+            var fixes = new List<Vertex>(vertices.Where(x => CheckVertex2(x, condF)));
 
 
             var count2 = 0;
@@ -261,7 +269,7 @@ namespace kursOptimiz
                 temp.X1.Value = 0.5 * ((nonFixed[i].X1.Value + sum1) / fixes.Count);
                 temp.X2.Value = 0.5 * ((nonFixed[i].X2.Value + sum2) / fixes.Count);
 
-                if (CheckVertex(temp))
+                if (CheckVertex2(temp, condF))
                 {
                     fixes.Add(temp);
                 }
@@ -286,8 +294,43 @@ namespace kursOptimiz
             //Поиск лучшей и худшей вершины
             do
             {
-                vertexG = vertices.OrderBy(x => x.Value).First();
-                var vertexD = vertices.OrderBy(x => x.Value).Last();
+                //vertexG = vertices.OrderBy(x => x.Value).First();
+                //var vertexD = vertices.OrderBy(x => x.Value).Last();
+                Vertex vertexD = default;
+
+                int minValueInx = 0;
+                int maxValueInx = 0;
+                double min = double.MaxValue;
+                double max = double.MinValue;
+
+                for (int i = 0; i < vertices.Length; i++)
+                {
+                    if (vertices[i].Value < min)
+                    {
+                        minValueInx = i;
+                        min = vertices[i].Value;
+                    }
+                    if (vertices[i].Value > max)
+                    {
+                        maxValueInx = i;
+                        max = vertices[i].Value;
+                    }
+                }
+
+                if (sMin)
+                {
+                    vertexG = vertices[minValueInx];
+                    vertexD = vertices[maxValueInx];
+                }
+                else
+                {
+                    vertexG = vertices[maxValueInx];
+                    vertexD = vertices[minValueInx];
+                }
+
+
+
+
 
                 //Определение координат Ci центра Комплекса с отброшенной "наихудшей" вершиной
                 // Для X1
@@ -299,16 +342,16 @@ namespace kursOptimiz
                     tsum2 += vertices[J].X2.Value;
                 }
 
-                double C_X1 = 1.0 / (N - 1) * (tsum1 - vertexD.X1.Value);
-                double C_X2 = 1.0 / (N - 1) * (tsum2 - vertexD.X2.Value);
-
+                double C_X1 = (tsum1 - vertexD.X1.Value)/ (N - 1);
+                double C_X2 = (tsum2 - vertexD.X2.Value)/ (N - 1);
+                    
                 
 
                 double cSum1 = Math.Abs(C_X1 - vertexD.X1.Value) + Math.Abs(C_X1 - vertexG.X1.Value);
                 double cSum2 = Math.Abs(C_X2 - vertexD.X2.Value) + Math.Abs(C_X2 - vertexG.X2.Value);
                 double B = (cSum1 + cSum2) / (2 * n);
                 //Проверка условия окончания поиска
-                if (B < FuncAccuracy)
+                if (B < FuncAccuracy/100)
                 {
                     break;
                 }
@@ -318,26 +361,9 @@ namespace kursOptimiz
                     new XPoint(2.3 * C_X1 - 1.3 * vertexD.X1.Value),
                     new XPoint(2.3 * C_X2 - 1.3 * vertexD.X2.Value));
 
-                // Проверка ограничений 1 рода для X1 и X2                
-                if (optVertex.X1.Value < Param1Min)
-                {
-                    optVertex.X1.Value = Param1Min + 1;
-                }
-                else if (optVertex.X1.Value > Param1Max)
-                {
-                    optVertex.X1.Value = Param1Max - 1;
-                }
-
-                if (optVertex.X2.Value < Param2Min)
-                {
-                    optVertex.X2.Value = Param2Min + 1;
-                }
-                else if (optVertex.X2.Value > Param2Max)
-                {
-                    optVertex.X2.Value = Param2Max - 1;
-                }
+               
                 //Проверка выполнения ограничений 2.го рода для новой точки.
-                while (!CheckVertex(optVertex))
+                while (!CheckVertex2(optVertex, condF))
                 {
                     optVertex.X1.Value = 0.5 * (optVertex.X1.Value + C_X1);
                     optVertex.X2.Value = 0.5 * (optVertex.X2.Value + C_X2);
@@ -363,7 +389,7 @@ namespace kursOptimiz
                     {
                         optVertex.X1.Value = 0.5 * (optVertex.X1.Value + vertexG.X1.Value);
                         optVertex.X2.Value = 0.5 * (optVertex.X2.Value + vertexG.X2.Value);
-                        optVertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { optVertex.X1.Value, optVertex.X2.Value }))+10;
+                        optVertex.Value = Convert.ToDouble(mainF.Invoke(null, new object[] { optVertex.X1.Value, optVertex.X2.Value }));
                     }
                 }
 
